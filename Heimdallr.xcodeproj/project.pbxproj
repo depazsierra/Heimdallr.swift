@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF66F8971EEAE8AC00F1655E /* request-valid-norefresh.json in Resources */ = {isa = PBXBuildFile; fileRef = BF66F8961EEAE8AC00F1655E /* request-valid-norefresh.json */; };
 		D44F76371DA52BDB002A4AC4 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F76361DA52BDB002A4AC4 /* ReactiveSwift.framework */; };
 		D44F76391DA52BEA002A4AC4 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F76381DA52BEA002A4AC4 /* ReactiveSwift.framework */; };
 		DC209CD31C845FA100C43C75 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC209CCB1C845F1900C43C75 /* Result.framework */; };
@@ -153,6 +154,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF66F8961EEAE8AC00F1655E /* request-valid-norefresh.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "request-valid-norefresh.json"; sourceTree = "<group>"; };
 		D44F76361DA52BDB002A4AC4 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Checkouts/ReactiveSwift/build/Debug/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D44F76381DA52BEA002A4AC4 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/Heimdallr-fdtctotgikuwtugzxtbbivybhrkn/Build/Products/Debug-iphonesimulator/ReactiveSwift.framework"; sourceTree = "<group>"; };
 		DC209CC51C845F1900C43C75 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Argo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -425,6 +427,7 @@
 				DC5220AE1BEA32A000F37F2A /* request-invalid-norefresh.json */,
 				DC5220AF1BEA32A000F37F2A /* request-invalid.json */,
 				DC5220B01BEA32A000F37F2A /* request-valid.json */,
+				BF66F8961EEAE8AC00F1655E /* request-valid-norefresh.json */,
 			);
 			path = "JSON Responses";
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF66F8971EEAE8AC00F1655E /* request-valid-norefresh.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

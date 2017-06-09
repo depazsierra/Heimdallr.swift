@@ -20,9 +20,6 @@ public let HeimdallrErrorNotAuthorized = 2
         get {
             return accessTokenStore.retrieveAccessToken()
         }
-        set {
-            accessTokenStore.storeAccessToken(newValue)
-        }
     }
 
     private let accessTokenParser: OAuthAccessTokenParser
@@ -79,7 +76,8 @@ public let HeimdallrErrorNotAuthorized = 2
     /// **Note:** Sets the access token's expiration date to
     ///     1 January 1970, GMT.
     open func invalidateAccessToken() {
-        accessToken = accessToken?.copy(expiresAt: Date(timeIntervalSince1970: 0))
+        // accessToken = accessToken?.copy(expiresAt: Date(timeIntervalSince1970: 0))
+        accessTokenStore.storeAccessToken(accessToken?.copy(expiresAt: Date(timeIntervalSince1970: 0)))
     }
 
     /// Clears the currently stored access token, if any.
@@ -145,8 +143,10 @@ public let HeimdallrErrorNotAuthorized = 2
                 completion(.failure(error as NSError))
             } else if (response as! HTTPURLResponse).statusCode == 200 {
                 if let accessToken = try? self.accessTokenParser.parse(data: data!) {
-                    self.accessToken = accessToken
-                    completion(.success(accessToken))
+                    //self.accessToken = accessToken
+                    //completion(.success(accessToken))
+                    let updatedAccessToken = self.updateAccessToken(accessToken)
+                    completion(.success(updatedAccessToken))
                 } else {
                     let userInfo = [
                         NSLocalizedDescriptionKey: NSLocalizedString("Could not authorize grant", comment: ""),
@@ -170,6 +170,24 @@ public let HeimdallrErrorNotAuthorized = 2
                 }
             }
         }
+    }
+
+    /// Updates the stored access token with a new one.
+    ///
+    /// - parameter accessToken: The new access token.
+    ///
+    /// - returns: The updated access token.
+    private func updateAccessToken(_ accessToken: OAuthAccessToken) -> OAuthAccessToken {
+        var updatedAccessToken = accessToken
+
+        if accessToken.refreshToken == nil {
+            if let storedRefreshToken = self.accessToken?.refreshToken {
+                updatedAccessToken = accessToken.copy(refreshToken: storedRefreshToken)
+            }
+        }
+
+        accessTokenStore.storeAccessToken(updatedAccessToken)
+        return updatedAccessToken
     }
 
     /// Alters the given request by adding authentication with an access token.
